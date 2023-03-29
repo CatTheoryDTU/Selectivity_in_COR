@@ -1,0 +1,37 @@
+import sys
+sys.path.append('..')
+from input_master import *
+
+# Reaction network
+rxn_expressions=[
+'H2CCH_100 + H2O_g + ele_g -> C2H4_g + OH_g + 2*_100',   #31
+'OHCCH2_100 + 3ele_g + 3H2O_g -> CH3CH2OH_g + 3OH_g + 2*_100',
+'H_100 + H_100 -> H2_g + 2*_100',     # Tafel 3
+
+'CO_g + *_100 <-> CO_100',
+'CO_100 + CO_100 <-> CO-CO_100 <-> OCCO_100',   #1
+'OCCO_100 + ele_g + H2O_g <-> OCCOH_100 + OH_g; beta=0.9128381777853191',   #2
+
+'OCCOH_100 + ele_g + H2O_g <-> OCCOH-H2O-ele_100 <-> HOCCOH_100 + OH_g; beta=0.6760725497418628',   #3
+'HOCCOH_100 + ele_g <-> HOCCOH-ele_100 <-> CCOH_100 + OH_g; beta=0.4014584608787422',   #3
+'CCOH_100 + ele_g + H2O_g <-> CCOH-H2O-ele_100 <-> HCCOH_100 + OH_g; beta=0.42034891489478937',
+
+'OCCOH_100 + ele_g <-> OCCOH-ele_100 <-> CCO_100 + OH_g; beta=0.7187360031419922 ',   #4
+'CCO_100 + ele_g + H2O_g <-> CCO-H2O-ele_100 <-> HCCO_100 + OH_g; beta=0.627045136433849',   #6
+'HCCO_100 + ele_g + H2O_g <-> HCCO-H2O-ele_100 <-> H2CCO_100 + OH_g; beta=0.49563402598287204',   #11
+'HCCO_100 + ele_g + H2O_g <-> OHCC-H2O-ele_100 <-> HCCOH_100 + OH_g; beta=0.77278',   #13
+
+'H2CCO_100 + ele_g + H2O_g <-> COH2C-H2O-ele_100 <-> OHCCH2_100 + OH_g; beta=0.40413623839267526',   #18
+'HCCOH_100 + ele_g <-> HCCOH-ele_100 <-> CCH_100 + OH_g; beta=0.29018642343139134 ',   #19
+
+'CCH_100 + ele_g + H2O_g <-> HCCH_100 + OH_g',   #21
+'HCCH_100 + ele_g + H2O_g <-> H2CCH_100 + OH_g',   #26
+'H2O_g + ele_g + *_100  <-> H2O-ele_100 <-> H_100 + OH_g; beta=0.43516785821339593',
+]
+
+# Standard rate parameter settings - usually not changed
+prefactor_list = [1e13]*len(rxn_expressions)  #Heine: prefactor for CO is 1e8
+
+rxn_mechanisms = {  # these are 1-indexed
+   "steps": [4, 5, 6, 3, 3],
+}
