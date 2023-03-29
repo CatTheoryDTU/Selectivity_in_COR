@@ -12,7 +12,9 @@ neb_start.traj
 IS*.traj
 FS*.traj
 charge*list
-pot_*.traj
+#pot_*.traj
+as_FS
+__pycache__
 init.traj
 *not_climbed.traj
 run*py
