@@ -1,5 +1,5 @@
 # Data and analysis tools for the study of product selectivity in eCO2R
-#published in ACS Catal XX
+# published in ACS Catal. 2023, 13, 7, 5062–5072 (https://pubs.acs.org/doi/full/10.1021/acscatal.3c00228)
 
 The repository contains the bare DFT optimized geometries and energies included
 in the folder `dft_data`. Here the thermodynamics (stable intermediates) and
